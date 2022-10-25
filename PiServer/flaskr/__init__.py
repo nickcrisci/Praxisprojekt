@@ -1,3 +1,4 @@
+from ast import Pass
 import os
 
 from flask import Flask
@@ -30,5 +31,12 @@ def create_app(test_config=None):
     # Import Log as Blueprint
     from . import log
     app.register_blueprint(log.bp)
+
+    # Import sim as Blueprint
+    try:
+        from . import sim
+        app.register_blueprint(sim.bp)
+    except ModuleNotFoundError:
+        Pass
 
     return app
