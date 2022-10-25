@@ -23,7 +23,12 @@ def create_app(test_config=None):
     def hello():
         return 'Hello, World!'
 
+    # Import Database
     from . import db
     db.init_app(app)
+
+    # Import Log as Blueprint
+    from . import log
+    app.register_blueprint(log.bp)
 
     return app
