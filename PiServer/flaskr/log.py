@@ -1,5 +1,5 @@
 from flask import (
-    Blueprint, request, make_response, jsonify
+    Blueprint, request, make_response, jsonify, render_template, g
 )
 
 import json
@@ -20,6 +20,15 @@ def get_row(id):
     ).fetchone()
 
     return dict_from_row(cur)
+
+@bp.route("/", methods=['GET'])
+def get_logs():
+    db = get_db()
+    cur = db.execute(
+        'SELECT * FROM log'
+    ).fetchall()
+    g.logs = [dict_from_row(log) for log in cur]
+    return render_template('log/logs.html')
 
 @bp.route('/info/', methods=['POST'])
 def info():
