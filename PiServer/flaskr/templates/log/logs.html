@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>{% block title %}Log overview{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    {% if g.logs %}
+        <div class="logs">
+            {% for log in g.logs %}
+                <div class="log">
+                    <div class="log-category"><p class="{{ log['category'] }}">Log Category: {{ log['category'] }}</p></div>
+                    <h2 class="log-title">{{ log["title"] }}</h2>
+                    <p class="log-body">{{ log["body"] }}</p>
+                    <time datetime="{{ log['created'] }}">{{ log['created'] }}</time>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}
