@@ -1,4 +1,3 @@
-from ast import Pass
 import os
 
 from flask import Flask
@@ -33,10 +32,11 @@ def create_app(test_config=None):
     app.register_blueprint(log.bp)
 
     # Import sim as Blueprint
+    # Only import when running on a Raspberry Pi (since GrovePi can't be installed via pip anymore)
     try:
         from . import sim
         app.register_blueprint(sim.bp)
     except ModuleNotFoundError:
-        Pass
+        pass
 
     return app
