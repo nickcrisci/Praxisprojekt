@@ -8,9 +8,9 @@
     {% if g.logs %}
         <div class="logs">
             {% for log in g.logs %}
-                <div class="log">
-                    <div class="log-category"><p class="{{ log['category'] }}">Log Category: {{ log['category'] }}</p></div>
-                    <h2 class="log-title">{{ log["title"] }}</h2>
+                <div class="log {{ log['category'] }}">
+                    <div class="log-category"><p>Log Category: {{ log['category'] }}</p></div>
+                    <h2>{{ log["title"] }}</h2>
                     <p class="log-body">{{ log["body"] }}</p>
                     <time datetime="{{ log['created'] }}">{{ log['created'] }}</time>
                 </div>
