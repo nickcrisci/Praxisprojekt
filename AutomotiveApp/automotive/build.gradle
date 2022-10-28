@@ -23,11 +23,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    useLibrary 'android.car'
 }
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
+    def sdkDir = project.android.sdkDirectory.canonicalPath
+    def androidCarJar = "$sdkDir/platforms/android-32/optional/android.car.jar"
+    implementation(files(androidCarJar))
+
+    implementation 'androidx.car.app:app:1.1.0'
+    implementation 'androidx.car.app:app-automotive:1.1.0'
+    implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
