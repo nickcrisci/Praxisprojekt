@@ -14,7 +14,6 @@ def dict_from_row(row):
 
 def get_row(id):
     db = get_db()
-    print(f"############# {id} ############")
     cur = db.execute(
         'SELECT * FROM log WHERE id = ?', [id]
     ).fetchone()
@@ -30,8 +29,8 @@ def get_logs():
     g.logs = [dict_from_row(log) for log in cur]
     return render_template('log/logs.html')
 
-@bp.route('/info/', methods=['POST'])
-def info():
+@bp.route('/', methods=['POST'])
+def postLog():
     content_type = request.headers.get('Content-Type')
 
     if (content_type != 'application/json'):
@@ -41,8 +40,8 @@ def info():
     json = request.json
 
     cursor = db.execute(
-        "INSERT INTO log (category, title, body) VALUES ('Info', ?, ?)",
-        (json["title"], json["body"])
+        "INSERT INTO log (category, title, body) VALUES (?, ?, ?)",
+        (json["category"], json["title"], json["body"])
     )
 
     db.commit()

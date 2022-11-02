@@ -96,6 +96,15 @@ header .action {
     resize: vertical;
 }
 
+/* ############ Logs Styling ############ */
+
+:root {
+    --info-color: green;
+    --error-color: red;
+    --warning-color: orange;
+    --debug-color: darkgray;
+    --other-color: lightgray;
+}
 
 .logs {
     padding: 5px;
@@ -105,26 +114,62 @@ header .action {
 .log {
     padding: 5px;
     margin: 10px;
-    border: 3px solid red;
 }
 
-.log-category {
-    font-size: small;
-    font-weight: bold;
-}
-
-.Info {
-    color: green;
-}
-
-.log-title {
-    margin: 0px;
-}
-
-.log-body {
+.log p {
     font-size: medium;
 }
 
 time {
     font-size: small;
+}
+
+.log.Info {
+    border: 3px solid var(--info-color);
+}
+
+.log.Error {
+    border: 3px solid var(--error-color);
+}
+
+.log.Warning {
+    border: 3px solid var(--warning-color);
+}
+
+.log.Debug {
+    border: 3px solid var(--debug-color);
+}
+
+.log.Other {
+    border: 3px solid var(--other-color);
+}
+
+.Info .log-category p {
+    font-size: small;
+    font-weight: bold;
+    color: var(--info-color);
+}
+
+.Error .log-category p {
+    font-size: small;
+    font-weight: bold;
+    color: var(--error-color);
+}
+
+.Warning .log-category p {
+    font-size: small;
+    font-weight: bold;
+    color: var(--warning-color);
+}
+
+.Debug .log-category p {
+    font-size: small;
+    font-weight: bold;
+    color: var(--debug-color);
+}
+
+.Other .log-category p {
+    font-size: small;
+    font-weight: bold;
+    color: var(--other-color);
 }
