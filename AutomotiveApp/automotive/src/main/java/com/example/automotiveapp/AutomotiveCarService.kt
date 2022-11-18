@@ -10,7 +10,7 @@ import androidx.car.app.validation.HostValidator
 import com.example.automotiveapp.Screens.HomeScreen
 
 
-class MyCarAppService : CarAppService() {
+class AutomotiveCarService : CarAppService() {
     override fun createHostValidator(): HostValidator {
         return if (applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE != 0) {
             HostValidator.ALLOW_ALL_HOSTS_VALIDATOR
