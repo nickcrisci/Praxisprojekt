@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'com.example.automotiveapp'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.automotiveapp"
-        minSdk 30
-        targetSdk 32
+        minSdk 29
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -25,10 +25,24 @@ android {
     }
 
     useLibrary 'android.car'
+    buildFeatures {
+        viewBinding true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 }
 
 dependencies {
 
+    implementation 'com.google.android.material:material:1.5.0-alpha04'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.2'
     def sdkDir = project.android.sdkDirectory.canonicalPath
     def androidCarJar = "$sdkDir/platforms/android-32/optional/android.car.jar"
     implementation(files(androidCarJar))
