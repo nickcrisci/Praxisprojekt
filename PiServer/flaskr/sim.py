@@ -6,7 +6,7 @@ import json
 
 from flaskr.db import get_db
 
-from .hardware import led
+from .hardware import led, lcd
 
 bp = Blueprint('sim', __name__, url_prefix='/sim')
 
@@ -16,5 +16,14 @@ def changeLedMode():
     if (content_type == 'application/json'):
         json = request.get_json()
         return jsonify(led.changeLedMode(json["mode"]))
+    else:
+        return { "error": "Content-Type not supported" }
+
+@bp.route("/lcd", methods=["POST"])
+def changeLcdText():
+    content_type = request.headers.get('Content-Type')
+    if (content_type == 'application/json'):
+        json = request.get_json()
+        return jsonify(lcd.setText(json["text"]))
     else:
         return { "error": "Content-Type not supported" }
