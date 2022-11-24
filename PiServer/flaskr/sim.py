@@ -8,6 +8,9 @@ from flaskr.db import get_db
 
 from .hardware import led, lcd
 
+# initially set lcd to white background
+lcd.setRGB(255, 255, 255)
+
 bp = Blueprint('sim', __name__, url_prefix='/sim')
 
 @bp.route("/led", methods=["POST"])
