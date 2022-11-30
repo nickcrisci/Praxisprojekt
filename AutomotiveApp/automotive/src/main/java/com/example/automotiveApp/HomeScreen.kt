@@ -1,12 +1,11 @@
-package com.example.automotiveapp.Screens
+package com.example.automotiveApp
 
 import android.util.Log
 import androidx.car.app.CarContext
 import androidx.car.app.Screen
-import androidx.car.app.hardware.CarHardwareManager
 import androidx.car.app.model.*
 import androidx.core.graphics.drawable.IconCompat
-import com.example.automotiveapp.R
+import com.example.AutomotiveApp.R
 
 class HomeScreen(carContext: CarContext): Screen(carContext) {
     override fun onGetTemplate(): Template {
@@ -20,6 +19,7 @@ class HomeScreen(carContext: CarContext): Screen(carContext) {
             .setImage(CarIcon.Builder(mGridIcon).build(), GridItem.IMAGE_TYPE_LARGE)
             .setOnClickListener {
                 Log.d(TAG, "GridItemCar was clicked")
+                screenManager.push(CarScreen(carContext))
             }.build()
 
         val gridItemAlerts = GridItem.Builder()
