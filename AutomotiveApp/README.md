@@ -22,3 +22,8 @@ client.subscribe("drea") { publish ->
   Log.i("drea", "Received payload: ${publish.payloadAsBytes.decodeToString()}")
 }
 ```
+
+## Ausführen auf der Hardware Lösung
+Um die App auf der Hardware Lösung ausführen zu können, muss mithilfe von der Android Debug Bridge (ADB) eine Verbindung zum Gerät hergestellt werden.
+Dafür muss zuerst das WIFI-Debugging auf dem Gerät aktiviert werden.
+Danach wird `adb connect <ip-des-geräts>` verwendet, um die Verbindung herzustellen. Daraufhin sollte das Gerät zum Ausführen der App zur Verfügung stehen.
